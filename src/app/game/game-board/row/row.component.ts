@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {MatchType} from "../../../match-type";
 import {CharacterState} from "../../../character-state";
 
 @Component({

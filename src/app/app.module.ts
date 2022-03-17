@@ -9,6 +9,8 @@ import { GameBoardComponent } from './game/game-board/game-board.component';
 import { KeyboardComponent } from './game/keyboard/keyboard.component';
 import { KeyboardKeyComponent } from "./game/keyboard/keyboard-key/keyboard-key.component";
 import { GameComponent } from './game/game.component';
+import { InputRowComponent } from './game/game-board/input-row/input-row.component';
+import { InputTileComponent } from './game/game-board/input-tile/input-tile.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { GameComponent } from './game/game.component';
     GameBoardComponent,
     KeyboardComponent,
     KeyboardKeyComponent,
-    GameComponent
+    GameComponent,
+    InputRowComponent,
+    InputTileComponent
   ],
   imports: [
     BrowserModule,
