@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {GameState} from "../game-state";
 import {GameStateService} from "../game-state.service";
 
 @Component({
@@ -13,20 +12,6 @@ export class GameComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('Game Init');
-    this.game.addCharacterToGuess('k');
-    this.game.addCharacterToGuess('a');
-    this.game.addCharacterToGuess('p');
-    this.game.addCharacterToGuess('e');
-    this.game.addCharacterToGuess('ć');
-    this.game.removeCharacterFromGuess();
-    this.game.addCharacterToGuess('l');
-    this.game.applyCurrentGuess();
-    this.game.addCharacterToGuess('s');
-    this.game.addCharacterToGuess('i');
-    this.game.addCharacterToGuess('e');
-    this.game.addCharacterToGuess('w');
-    this.game.addCharacterToGuess('y');
-    this.game.applyCurrentGuess();
   }
 
   onKeyClicked($event: string) {

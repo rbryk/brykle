@@ -21,7 +21,7 @@ export class GameStateService {
   private currentGuessResult : CharacterState[] = [];
 
   public constructor() {
-    this.solution = 'walec';
+    this.solution = 'WALEC';
   }
 
   public addCharacterToGuess(character: string) {
@@ -70,13 +70,13 @@ export class GameStateService {
   }
 
   public matchType(key: string) {
-    if (this.matchCharacters.indexOf(key) > 0 || key=='S') {
+    if (this.matchCharacters.indexOf(key) > -1) {
       return MatchType.Match;
     }
-    if (this.missCharacters.indexOf(key) > 0) {
+    if (this.missCharacters.indexOf(key) > -1) {
       return MatchType.Miss;
     }
-    if (this.partialCharacters.indexOf(key) > 0) {
+    if (this.partialCharacters.indexOf(key) > -1) {
       return MatchType.Partial;
     }
     return MatchType.None;

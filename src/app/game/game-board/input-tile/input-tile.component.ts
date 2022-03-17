@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {GameStateService} from "../../../game-state.service";
 import {CharacterState} from "../../../character-state";
 import {MatchType} from "../../../match-type";
 
@@ -10,8 +11,9 @@ import {MatchType} from "../../../match-type";
 export class InputTileComponent implements OnInit {
 
   @Input() character : string = '';
+  @Input() number : number = -1;
 
-  constructor() { }
+  constructor(public game: GameStateService) { }
 
   ngOnInit(): void {
   }

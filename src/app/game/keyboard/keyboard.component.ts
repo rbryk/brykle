@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {GameState} from "../../game-state";
+import {GameStateService} from "../../game-state.service";
 
 @Component({
   selector: 'app-keyboard',
@@ -8,9 +8,7 @@ import {GameState} from "../../game-state";
 })
 export class KeyboardComponent implements OnInit {
 
-  @Input() public game : GameState = new GameState('');
-
-  constructor() { }
+  constructor(public game: GameStateService) { }
 
   @Output() keyClicked: EventEmitter<string> =
       new EventEmitter<string>();

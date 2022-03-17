@@ -11,6 +11,8 @@ import { KeyboardKeyComponent } from "./game/keyboard/keyboard-key/keyboard-key.
 import { GameComponent } from './game/game.component';
 import { InputRowComponent } from './game/game-board/input-row/input-row.component';
 import { InputTileComponent } from './game/game-board/input-tile/input-tile.component';
+import { MatSnackBarModule } from "@angular/material/snack-bar";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -26,7 +28,9 @@ import { InputTileComponent } from './game/game-board/input-tile/input-tile.comp
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatSnackBarModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
