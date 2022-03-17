@@ -1,0 +1,32 @@
+.keyboardKey {
+  //background-color: var(--status-color-match);
+  //color: var(--keyboard-key-text-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+  //background-color: var(--keyboard-key-background-color);
+  //color: var(--keyboard-key-text-color);
+  background-color: #666666;
+  color: #eeeeee;
+  width: 100%;
+  height: 100%;
+  transition: background-color 200ms;
+}
+
+.key-none {
+  background-color: #888888;
+}
+
+.key-miss {
+  background-color: #333333;
+}
+
+.key-partial {
+  background-color: darkgoldenrod;
+}
+
+.key-match {
+  background-color: #1976d2;
+}
