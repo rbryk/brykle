@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GameStateService} from "../../../game-state.service";
-import {CharacterState} from "../../../character-state";
-import {MatchType} from "../../../match-type";
+import {GameStateService} from "../../shared/game-state.service";
+import {CharacterState} from "../../shared/character-state";
+import {MatchType} from "../../shared/match-type";
 
 @Component({
   selector: 'app-input-tile',

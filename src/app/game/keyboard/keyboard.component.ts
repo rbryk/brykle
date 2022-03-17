@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {GameStateService} from "../../game-state.service";
+import {GameStateService} from "../shared/game-state.service";
 
 @Component({
   selector: 'app-keyboard',

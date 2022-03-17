@@ -3,7 +3,6 @@
 Polska wersja gry słownej Wordle.
 
 TODO:
-- obsługa warunku końca gry
 - losowanie słowa na dany dzień
 - sprawdzanie czy wprowadzone litery tworzą poprawne słowo
 - poprawienie podpowiedzi jeśli w haśle litera występuje podwójnie

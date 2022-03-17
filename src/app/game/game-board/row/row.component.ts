@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CharacterState} from "../../../character-state";
+import {CharacterState} from "../../shared/character-state";
 
 @Component({
   selector: 'app-row',

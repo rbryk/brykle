@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {GameStateService} from "../../../game-state.service";
+import {GameStateService} from "../../shared/game-state.service";
 
 @Component({
   selector: 'app-keyboard-key',
@@ -20,7 +20,9 @@ export class KeyboardKeyComponent implements OnInit {
   }
 
   onClick(): void {
-    this.keyClicked.emit(this.key);
+    if (!this.game.isOver()) {
+      this.keyClicked.emit(this.key);
+    }
   }
 
 }
