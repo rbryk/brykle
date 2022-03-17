@@ -14,6 +14,7 @@ import { InputTileComponent } from './game/game-board/input-tile/input-tile.comp
 import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { HeaderComponent } from './header/header.component';
+import { ActionBarComponent } from './game/action-bar/action-bar.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { HeaderComponent } from './header/header.component';
     GameComponent,
     InputRowComponent,
     InputTileComponent,
-    HeaderComponent
+    HeaderComponent,
+    ActionBarComponent
   ],
   imports: [
     BrowserModule,
