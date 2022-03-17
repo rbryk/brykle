@@ -17,7 +17,6 @@ export class KeyboardComponent implements OnInit {
   }
 
   onKeyClicked($event: string) {
-    console.log($event);
     this.keyClicked.emit($event);
   }
 }

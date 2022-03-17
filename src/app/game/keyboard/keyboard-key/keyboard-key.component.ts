@@ -20,7 +20,6 @@ export class KeyboardKeyComponent implements OnInit {
   }
 
   onClick(): void {
-    console.log(this.game.matchCharacters);
     this.keyClicked.emit(this.key);
   }
 

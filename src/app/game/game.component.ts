@@ -11,7 +11,6 @@ export class GameComponent implements OnInit {
   constructor(public game: GameStateService) {}
 
   ngOnInit(): void {
-    console.log('Game Init');
   }
 
   onKeyClicked($event: string) {

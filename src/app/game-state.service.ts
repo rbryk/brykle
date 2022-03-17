@@ -40,7 +40,6 @@ export class GameStateService {
 
   public applyCurrentGuess() {
     if (this.isGuessFilled()) {
-      console.log('Apply!');
       this.currentGuessResult = [];
       this.currentGuess.forEach((character, index) => {
         let res: CharacterState;
