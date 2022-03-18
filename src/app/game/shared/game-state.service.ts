@@ -23,7 +23,7 @@ export class GameStateService {
     private currentGuessResult: CharacterState[] = [];
 
     public constructor() {
-        this.solution = 'WALEC';
+        this.solution = 'BRYKL';
     }
 
     public addCharacterToGuess(character: string): void {

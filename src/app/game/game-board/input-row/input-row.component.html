@@ -1,4 +1,5 @@
 <div *ngIf="!game.isOver()" class="game-row">
-    <app-input-tile *ngFor='let character of this.game.currentGuess; index as num' [character]='character' [number]="num">
+    <app-input-tile *ngFor='let character of this.game.currentGuess; index as num' [character]='character'
+                    [number]="num">
     </app-input-tile>
 </div>
