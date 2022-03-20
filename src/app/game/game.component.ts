@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {GameStateService} from "./shared/game-state.service";
+import {DictionaryService} from "./shared/dictionary.service";
+import {SnackbarControllerService} from "../snackbar/snackbar-controller.service";
 
 @Component({
     selector: 'app-game',
@@ -8,7 +10,10 @@ import {GameStateService} from "./shared/game-state.service";
 })
 export class GameComponent implements OnInit {
 
-    constructor(public game: GameStateService) {
+    constructor(
+        public game: GameStateService,
+        private dictionay: DictionaryService,
+        private snackbar: SnackbarControllerService) {
     }
 
     ngOnInit(): void {
@@ -16,7 +21,13 @@ export class GameComponent implements OnInit {
 
     onKeyClicked($event: string) {
         if ($event == 'OK') {
-            this.game.applyCurrentGuess()
+            if (this.game.isGuessFilled()) {
+                if (this.dictionay.isGuessValid(this.game.getCurrentGuess())) {
+                    this.game.applyCurrentGuess()
+                } else {
+                    this.snackbar.show('To nie jest poprawne słowo');
+                }
+            }
             return;
         }
         if ($event == '<<') {

@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CharacterState} from "../../shared/character-state";
+import {CharacterState} from "../../../shared/character-state";
 
 @Component({
     selector: 'app-row',
@@ -9,6 +9,7 @@ import {CharacterState} from "../../shared/character-state";
 export class RowComponent implements OnInit {
 
     @Input() public guess: CharacterState[] = [];
+    @Input() public flatness: string = 'normal';
 
     constructor() {
     }

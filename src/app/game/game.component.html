@@ -1,5 +1,7 @@
 <div class="game">
+    <app-snackbar></app-snackbar>
     <app-game-board></app-game-board>
     <app-action-bar></app-action-bar>
     <app-keyboard (keyClicked)='onKeyClicked($event)'></app-keyboard>
+    <app-endgame-popup *ngIf="game.isOver()"></app-endgame-popup>
 </div>

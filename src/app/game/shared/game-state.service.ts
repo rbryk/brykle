@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {CharacterState} from "./character-state";
 import {MatchType} from "./match-type";
+import {DictionaryService} from "./dictionary.service";
 
 @Injectable({
     providedIn: 'root'
@@ -8,6 +9,7 @@ import {MatchType} from "./match-type";
 export class GameStateService {
 
     public MAX_CHARACTERS = 5;
+    public MAX_GUESSES = 6;
 
     public guesses: CharacterState[][] = [];
     public currentGuess: string[] = ['', '', '', '', ''];
@@ -20,10 +22,8 @@ export class GameStateService {
 
     public solution: string = '';
 
-    private currentGuessResult: CharacterState[] = [];
-
-    public constructor() {
-        this.solution = 'BRYKL';
+    public constructor(private dictionary: DictionaryService) {
+        this.solution = this.dictionary.getWordForToday();
     }
 
     public addCharacterToGuess(character: string): void {
@@ -41,29 +41,53 @@ export class GameStateService {
     }
 
     public applyCurrentGuess(): void {
-        if (this.isGuessFilled()) {
-            this.currentGuessResult = [];
-            this.currentGuess.forEach((character, index) => {
-                let res: CharacterState;
-                if (this.solution.charAt(index) === character) {
-                    res = new CharacterState(character, MatchType.Match);
-                    this.matchCharacters.push(character);
-                } else {
-                    if (this.solution.charAt(index) !== character && this.solution.indexOf(character) > -1) {
-                        res = new CharacterState(character, MatchType.Partial);
-                        this.partialCharacters.push(character);
-                    } else {
-                        res = new CharacterState(character, MatchType.Miss);
-                        this.missCharacters.push(character);
-                    }
+        this.guesses.push(this.prepareCurrentGuessResult());
+        this.currentGuessNumber++;
+        this.currentInputCharacter = 0;
+        this.currentGuess = ['', '', '', '', ''];
+    }
+
+    private prepareCurrentGuessResult(): CharacterState[] {
+        let currentGuessResult: CharacterState[] = [];
+        let markedSolution = this.solution.split('');
+        let markedGuess = this.currentGuess;
+
+        // find match
+        markedGuess.forEach((character, index) => {
+            if (markedSolution[index] === character) {
+                currentGuessResult[index] = new CharacterState(character, MatchType.Match);
+                this.matchCharacters.push(character);
+                markedSolution[index] = '';
+                markedGuess[index] = ''
+            }
+        });
+
+        // find partial
+        markedGuess.forEach((character, index) => {
+            if (character !== '') {
+                let indexOfMatch = markedSolution.indexOf(character);
+                if (markedSolution[index] !== character && indexOfMatch > -1) {
+                    currentGuessResult[index] = new CharacterState(character, MatchType.Partial);
+                    this.partialCharacters.push(character);
+                    markedSolution[indexOfMatch] = '';
+                    markedGuess[index] = ''
                 }
-                this.currentGuessResult.push(res);
-            })
-            this.guesses.push(this.currentGuessResult);
-            this.currentGuessNumber++;
-            this.currentInputCharacter = 0;
-            this.currentGuess = ['', '', '', '', ''];
-        }
+            }
+        });
+
+        // find miss
+        markedGuess.forEach((character, index) => {
+            if (character !== '') {
+                currentGuessResult[index] = new CharacterState(character, MatchType.Miss);
+                this.missCharacters.push(character);
+            }
+        });
+
+        return currentGuessResult;
+    }
+
+    getCurrentGuess(): string {
+        return "".concat(...this.currentGuess);
     }
 
     public keyType(key: string): string {
@@ -84,7 +108,19 @@ export class GameStateService {
     }
 
     public isOver(): boolean {
-        return this.lastGuessed() === this.solution;
+        return this.youWin() || this.youLose();
+    }
+
+    public youWin(): boolean {
+        return this.lastGuessed() === this.solution && this.currentGuessNumber <= 7
+    }
+
+    public youLose(): boolean {
+        return this.currentGuessNumber > 6;
+    }
+
+    public emptyLines() {
+        return this.currentGuessNumber < 6 ? [...Array(this.MAX_GUESSES - this.currentGuessNumber).keys()] : [];
     }
 
     private lastGuessed(): string | undefined {
@@ -96,7 +132,7 @@ export class GameStateService {
         }));
     }
 
-    private isGuessFilled(): boolean {
+    public isGuessFilled(): boolean {
         return this.currentGuess.indexOf('') === -1;
     }
 

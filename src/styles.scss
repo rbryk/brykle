@@ -6,3 +6,27 @@ body {
   background-color: #161d21;
   color:white;
 }
+
+/* unvisited link */
+a:link {
+  color: deepskyblue;
+  text-decoration: none;
+}
+
+/* visited link */
+a:visited {
+  color: deepskyblue;
+  text-decoration: none;
+}
+
+/* mouse over link */
+a:hover {
+  color: deepskyblue;
+  text-decoration: none;
+}
+
+/* selected link */
+a:active {
+  color: deepskyblue;
+  text-decoration: none;
+}

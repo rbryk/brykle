@@ -1,4 +1,4 @@
-<div class="action-bar">
+<div class="action-bar" *ngIf="!game.isOver()">
     <div class="attempt-num">
         Próba: {{game.currentGuessNumber}}
     </div>

@@ -1,4 +1,4 @@
-<div class="keyboardKey" [ngClass]="game.keyType(this.key)" (click)='onClick()'>
+<div class="keyboardKey" [ngClass]="[game.keyType(this.key)]" (click)='onClick()'>
     {{this.key}}
 </div>
 

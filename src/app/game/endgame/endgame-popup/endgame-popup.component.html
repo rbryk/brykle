@@ -1,0 +1,42 @@
+<div id="popupOverlayElement">
+    <div class="popup-container">
+        <div class="popup" *ngIf="game.youWin()">
+            <div class="title">
+                Gratulacje!
+            </div>
+            <div class="text">
+                Odgadnięte hasło to:
+            </div>
+            <app-row [guess]="this.solution" [flatness]="'normal'"></app-row>
+            <div class="text sjp-link">
+                Sprawdź znaczenie słowa na <a href="{{dictLink}}" target="_blank">{{dictLink}}</a>
+            </div>
+            <div class="text attempts">
+                Liczba prób: {{game.currentGuessNumber - 1}}
+            </div>
+            <div class="text">
+                Wróć <b>za godzinę</b> i zmierz się z kolejnym słowem!
+            </div>
+            <div class="text">
+                (Tu wkrótce pojawi się możliwość podzielenia się wynikiem)
+            </div>
+            <div class="footer">Autor: Rafał Bryk</div>
+        </div>
+        <div class="popup" *ngIf="!game.youWin()">
+            <div class="title">
+                Niestety ...
+            </div>
+            <div class="text">
+                Poprawne hasło to:
+            </div>
+            <app-row [guess]="this.solution"></app-row>
+            <div class="text sjp-link">
+                Sprawdź znaczenie słowa na <a href="{{dictLink}}" target="_blank">{{dictLink}}</a>
+            </div>
+            <div class="text">
+                Wróć <b>za godzinę</b> i zmierz się z kolejnym słowem, na pewno pójdzie Ci lepiej :-)
+            </div>
+            <div class="footer">Autor: Rafał Bryk</div>
+        </div>
+    </div>
+</div>

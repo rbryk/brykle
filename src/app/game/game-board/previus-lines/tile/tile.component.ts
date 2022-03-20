@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {CharacterState} from "../../shared/character-state";
-import {MatchType} from "../../shared/match-type";
+import {CharacterState} from "../../../shared/character-state";
+import {MatchType} from "../../../shared/match-type";
 
 @Component({
   selector: 'app-tile',
@@ -10,6 +10,7 @@ import {MatchType} from "../../shared/match-type";
 export class TileComponent implements OnInit {
 
   @Input() character : CharacterState = new CharacterState('', MatchType.None);
+  @Input() flatness: string = "normal";
 
   constructor() { }
 

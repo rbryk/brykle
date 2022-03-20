@@ -1,6 +1,7 @@
 <div class="board-section">
     <div class="board-container-element">
-        <app-row *ngFor='let guess of this.game.guesses' [guess]="guess"></app-row>
+        <app-row *ngFor='let guess of game.guesses' [guess]="guess" [flatness]="'flat'"></app-row>
         <app-input-row></app-input-row>
+        <app-empty-row *ngFor='let _ of game.emptyLines()'></app-empty-row>
     </div>
 </div>

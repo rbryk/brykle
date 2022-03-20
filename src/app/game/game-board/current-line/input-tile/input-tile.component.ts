@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {GameStateService} from "../../shared/game-state.service";
+import {GameStateService} from "../../../shared/game-state.service";
 
 @Component({
     selector: 'app-input-tile',
