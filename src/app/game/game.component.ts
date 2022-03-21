@@ -13,7 +13,8 @@ export class GameComponent implements OnInit {
     constructor(
         public game: GameStateService,
         private dictionay: DictionaryService,
-        private snackbar: SnackbarControllerService) {
+        private snackbar: SnackbarControllerService
+    ) {
     }
 
     ngOnInit(): void {

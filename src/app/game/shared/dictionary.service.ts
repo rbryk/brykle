@@ -9,6 +9,7 @@ export class DictionaryService {
     private readonly _largePrimeNumber = 63949;
 
     private vowels: string = "EYUIOAĄĘÓ";
+    private polishCharacters: string = "ĄĘÓŚĆŻŹŃŁ";
     public wordCount: number = 0;
 
     constructor(private wordsDatabase: WordsDatabaseService) {
@@ -23,8 +24,14 @@ export class DictionaryService {
         return (this.vowels.indexOf(character) > -1);
     }
 
+    hasPolishCharacters(word: string): boolean {
+        return this.polishCharacters.split('').some(function (v, i, a) {
+            return word.lastIndexOf(v) != -1;
+        });
+    }
+
     anyCharactersRepeated(solution: string): boolean {
-        return solution.split("").some(function(v, i, a){
+        return solution.split("").some(function (v, i, a) {
             return a.lastIndexOf(v) != i;
         });
     }
@@ -38,5 +45,15 @@ export class DictionaryService {
         let date = new Date();
         date.setHours(date.getHours(), 0, 0, 0);
         return (date.getTime() * this._largePrimeNumber) % this.wordCount;
+    }
+
+    public attemptDeclination(attemptCount: number) {
+        return "".concat(attemptCount.toString(), ' ', (attemptCount === 1) ? 'próbie' : 'próbach');
+    }
+
+    public hintCountDeclination(hintsCount: number) {
+        return (hintsCount === 0)
+            ? 'bez użycia podpowiedzi'
+            : 'używając ' + hintsCount + ' podpowiedzi'
     }
 }

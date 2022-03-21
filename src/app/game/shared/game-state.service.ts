@@ -21,9 +21,13 @@ export class GameStateService {
     public missCharacters: string[] = [];
 
     public solution: string = '';
+    public startDate: Date;
+
+    public hintUsed: number = 0;
 
     public constructor(private dictionary: DictionaryService) {
         this.solution = this.dictionary.getWordForToday();
+        this.startDate = new Date();
     }
 
     public addCharacterToGuess(character: string): void {
@@ -135,5 +139,4 @@ export class GameStateService {
     public isGuessFilled(): boolean {
         return this.currentGuess.indexOf('') === -1;
     }
-
 }

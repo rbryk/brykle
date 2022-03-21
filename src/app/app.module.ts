@@ -12,6 +12,7 @@ import {GameComponent} from './game/game.component';
 import {InputRowComponent} from './game/game-board/current-line/input-row/input-row.component';
 import {InputTileComponent} from './game/game-board/current-line/input-tile/input-tile.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {MaterialExampleModule} from '../material.module';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HeaderComponent} from './header/header.component';
 import {ActionBarComponent} from './game/action-bar/action-bar.component';
@@ -42,6 +43,7 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
         BrowserModule,
         AppRoutingModule,
         MatSnackBarModule,
+        MaterialExampleModule,
         BrowserAnimationsModule
     ],
     providers: [],

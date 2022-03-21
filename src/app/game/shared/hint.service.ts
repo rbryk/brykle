@@ -13,6 +13,7 @@ export class HintService {
     public getRandomHint(): string {
         let hints = this.getHints();
         let num = this.randomInt(hints.length);
+        this.game.hintUsed++;
         return hints[num];
     }
 
@@ -29,7 +30,11 @@ export class HintService {
             hints.push("W rozwiązaniu niektóre litery występują wielokrotnie");
         }
 
-        hints.push("Pomyśl, znasz to słowo :-)");
+        if (this.dictionary.hasPolishCharacters(this.game.solution)) {
+            hints.push("W rozwiązaniu występują polskie znaki diakrytyczne");
+        } else {
+            hints.push("W rozwiązaniu NIE występują polskie znaki diakrytyczne");
+        }
 
         return hints;
     }
