@@ -15,15 +15,17 @@ export class ResultService {
     }
 
     public share(): string {
-        const brykleDate = this.game.startDate.toLocaleString('default', {day: 'numeric', month: 'long'});
-        const brykleTime = this.game.startDate.toLocaleString('default', {hour: 'numeric'}) + ':00';
+        let brykleStartDate = this.game.startDate;
+        brykleStartDate.setHours(brykleStartDate.getHours(), 0, 0, 0);
+        const brykleDate = brykleStartDate.toLocaleString('pl-PL', {day: 'numeric', month: 'long'});
+        const brykleTime = brykleStartDate.toLocaleString('pl-PL', {hour: 'numeric', minute: '2-digit'});
         const board = this.getBoardAsAscii();
         let result: string = '';
         if (this.game.youWin()) {
             result +=
-                'Rozwiązałem #brykle z dnia ' +
+                'Sukces w #brykle z dnia ' +
                 brykleDate +
-                ' godz ' +
+                ' godz. ' +
                 brykleTime +
                 ' po ' +
                 this.dictionary.attemptDeclination(this.game.currentGuessNumber - 1) +
@@ -31,7 +33,13 @@ export class ResultService {
                 this.dictionary.hintCountDeclination(this.game.hintUsed) +
                 "\n";
         } else {
-            result += 'Poległem w #brykle z dnia ' + brykleDate + ' godz ' + brykleTime + '. Może Tobie pójdzie lepiej.' + "\n";
+            result +=
+                'Porażka w #brykle z dnia ' +
+                brykleDate +
+                ' godz. ' +
+                brykleTime +
+                '. Może Tobie pójdzie lepiej.' +
+                "\n";
         }
         result += board;
         result += 'Graj na http://rafalbryk.pl';

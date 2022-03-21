@@ -7,14 +7,26 @@ import {DictionaryService} from "./dictionary.service";
 })
 export class HintService {
 
+    private readonly NO_MORE_HINTS = "Nie ma więcej podpowiedzi";
+
+    private hints: string[];
+    private currentHint: number;
+
     constructor(public game: GameStateService, public dictionary: DictionaryService) {
+        this.hints = this.getHints().sort(() => Math.random() - 0.5);
+        this.currentHint = 0;
     }
 
     public getRandomHint(): string {
-        let hints = this.getHints();
-        let num = this.randomInt(hints.length);
-        this.game.hintUsed++;
-        return hints[num];
+        if (this.currentHint >= this.hints.length) {
+            this.currentHint = 0;
+            return this.NO_MORE_HINTS;
+        } else {
+            if (this.game.hintUsed < this.hints.length) {
+                this.game.hintUsed++;
+            }
+            return this.hints[this.currentHint++];
+        }
     }
 
     private getHints(): string[] {
@@ -28,6 +40,8 @@ export class HintService {
 
         if (this.dictionary.anyCharactersRepeated(this.game.solution)) {
             hints.push("W rozwiązaniu niektóre litery występują wielokrotnie");
+        } else {
+            hints.push("W rozwiązaniu każda litera występują jednokrotnie");
         }
 
         if (this.dictionary.hasPolishCharacters(this.game.solution)) {

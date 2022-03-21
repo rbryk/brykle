@@ -8,8 +8,8 @@ import {DictionaryService} from "./dictionary.service";
 })
 export class GameStateService {
 
-    public MAX_CHARACTERS = 5;
-    public MAX_GUESSES = 6;
+    public readonly MAX_CHARACTERS = 5;
+    public readonly MAX_GUESSES = 6;
 
     public guesses: CharacterState[][] = [];
     public currentGuess: string[] = ['', '', '', '', ''];
