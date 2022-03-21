@@ -14,12 +14,13 @@ import {InputTileComponent} from './game/game-board/current-line/input-tile/inpu
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MaterialExampleModule} from '../material.module';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {HeaderComponent} from './header/header.component';
+import {HeaderComponent} from './game/header/header.component';
 import {ActionBarComponent} from './game/action-bar/action-bar.component';
 import { EmptyTileComponent } from './game/game-board/next-lines/empty-tile/empty-tile.component';
 import { EmptyRowComponent } from './game/game-board/next-lines/empty-row/empty-row.component';
 import { EndgamePopupComponent } from './game/endgame/endgame-popup/endgame-popup.component';
 import { SnackbarComponent } from './snackbar/snackbar.component';
+import { HelpPopupComponent } from './game/header/help-popup/help-popup.component';
 
 @NgModule({
     declarations: [
@@ -38,6 +39,7 @@ import { SnackbarComponent } from './snackbar/snackbar.component';
         EmptyRowComponent,
         EndgamePopupComponent,
         SnackbarComponent,
+        HelpPopupComponent,
     ],
     imports: [
         BrowserModule,

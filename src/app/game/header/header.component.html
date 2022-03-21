@@ -1,0 +1,17 @@
+<div class="header">
+    <div class="icon" (click)="clickHelp()">
+        <mat-icon>help_outline</mat-icon>
+    </div>
+    <div class="center-text">
+        <div class="title">Brykle</div>
+        <div class="subtitle">
+            Polska wersja gry słownej
+            <a href="https://www.google.com/search?q=wordle" target="_blank">Wordle</a>
+        </div>
+    </div>
+    <div class="icon" (click)="clickHelp()">
+        <mat-icon>help_outline</mat-icon>
+    </div>
+</div>
+
+<app-help-popup *ngIf="showHelp" (xClicked)='onXClicked()'></app-help-popup>

@@ -99,10 +99,10 @@ export class GameStateService {
     }
 
     public matchType(key: string): MatchType {
-        if (this.matchCharacters.indexOf(key) > -1) {
+        if (this.matchCharacters.indexOf(key) > -1 || key === 'OK') {
             return MatchType.Match;
         }
-        if (this.missCharacters.indexOf(key) > -1) {
+        if (this.missCharacters.indexOf(key) > -1 || key === '<<') {
             return MatchType.Miss;
         }
         if (this.partialCharacters.indexOf(key) > -1) {
