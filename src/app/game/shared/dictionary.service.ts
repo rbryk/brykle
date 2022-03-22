@@ -24,6 +24,12 @@ export class DictionaryService {
         return (this.vowels.indexOf(character) > -1);
     }
 
+    countVowels(word: string): number {
+        return word.split('').reduce((prev, next) => {
+            return (this.isVowel(next)) ? prev + 1 : prev;
+        }, 0);
+    }
+
     hasPolishCharacters(word: string): boolean {
         return this.polishCharacters.split('').some(function (v, i, a) {
             return word.lastIndexOf(v) != -1;

@@ -153,4 +153,10 @@ export class GameStateService {
     public isGuessFilled(): boolean {
         return this.currentGuess.indexOf('') === -1;
     }
+
+    public nextBrykleHour(): string {
+        let nextBrykleDate = this.startDate;
+        nextBrykleDate.setHours(nextBrykleDate.getHours() + 1, 0, 0, 0);
+        return nextBrykleDate.toLocaleString('pl-PL', {hour: 'numeric', minute: '2-digit'});
+    }
 }

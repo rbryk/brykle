@@ -50,6 +50,22 @@ export class HintService {
             hints.push("W rozwiązaniu NIE występują polskie znaki diakrytyczne");
         }
 
+        let vowelCount = this.dictionary.countVowels(this.game.solution);
+        switch (vowelCount) {
+            case 0: {
+                hints.push("W rozwiązaniu nie występują samogłoski");
+                break;
+            }
+            case 1: {
+                hints.push("W rozwiązaniu występuje 1 samogłoska");
+                break;
+            }
+            default: {
+                hints.push(`W rozwiązaniu występują ${vowelCount} samogłoski`);
+                break;
+            }
+        }
+
         return hints;
     }
 

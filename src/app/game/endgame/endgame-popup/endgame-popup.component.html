@@ -7,7 +7,7 @@
             <div class="text">
                 Odgadnięte hasło to:
             </div>
-            <app-row [guess]="this.solution" [flatness]="'normal'"></app-row>
+            <app-row [guess]="this.solution" [flatness]="'minimal'"></app-row>
             <div class="text sjp-link">
                 Sprawdź znaczenie słowa na <a href="{{dictLink}}" target="_blank">{{dictLink}}</a>
             </div>
@@ -17,7 +17,7 @@
                 Podpowiedzi: {{game.hintUsed}}
             </div>
             <div class="text">
-                Wróć <b>za godzinę</b> i zmierz się z kolejnym słowem!
+                Wróć po <b>{{this.game.nextBrykleHour()}}</b> i zmierz się z kolejnym słowem!
             </div>
             <button class="share-button" [cdkCopyToClipboard]="result.share()" (click)="onClick()">
                 Udostępnij
@@ -31,12 +31,12 @@
             <div class="text">
                 Poprawne hasło to:
             </div>
-            <app-row [guess]="this.solution"></app-row>
+            <app-row [guess]="this.solution" [flatness]="'minimal'"></app-row>
             <div class="text sjp-link">
                 Sprawdź znaczenie słowa na <a href="{{dictLink}}" target="_blank">{{dictLink}}</a>
             </div>
             <div class="text">
-                Wróć <b>za godzinę</b> i zmierz się z kolejnym słowem, na pewno pójdzie Ci lepiej :-)
+                Wróć po <b>{{this.game.nextBrykleHour()}}</b> i zmierz się z kolejnym słowem, na pewno pójdzie Ci lepiej :-)
             </div>
             <button class="share-button" [cdkCopyToClipboard]="result.share()" (click)="onClick()">
                 Udostępnij
