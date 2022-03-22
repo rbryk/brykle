@@ -6,24 +6,27 @@
                 <mat-icon>highlight_off</mat-icon>
             </div>
             <div class="text">
-            BRYKLE to polska wersja angielskiej gry słownej WORDLE.
-            </div>
-            <div class="text">
-            Każdego dnia spróbuj odgadnąć ukryte słowo w jak najmniejszej liczbie prób oraz podpowiedzi. Wpisz słowo i zatwierdź OK a kafelki pokażą jak blisko jesteś rozwiązania.
+                BRYKLE to polska wersja angielskiej gry słownej WORDLE.
             </div>
 
             <div class="text">
-            Przykład:
+                Co godzinę spróbuj odgadnąć ukryte słowo w jak najmniejszej liczbie prób oraz podpowiedzi. Wpisz słowo i
+                zatwierdź OK a kafelki pokażą jak blisko jesteś rozwiązania.
+            </div>
+
+            <div class="text">
+                Przykład:
             </div>
 
             <app-row [guess]="this.worek" [flatness]="'normal'"></app-row>
 
             <div class="text">
-            Litera O występuje w rozwiązaniu i jest na właściwym miejscu. Litery R i K też występują, ale na innych miejscach. Natomiast litery W ani E w ogóle nie ma w rozwiązaniu.
+                Litera O występuje w rozwiązaniu i jest na właściwym miejscu. Litery R i K też występują, ale na innych
+                miejscach. Natomiast litery W ani E w ogóle nie ma w rozwiązaniu.
             </div>
 
             <div class="text">
-            Dla porównania, rozwiązanie to
+                Dla porównania, rozwiązanie to
             </div>
 
             <app-row [guess]="this.rolka" [flatness]="'normal'"></app-row>

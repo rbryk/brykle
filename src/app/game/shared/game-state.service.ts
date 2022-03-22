@@ -30,6 +30,20 @@ export class GameStateService {
         this.startDate = new Date();
     }
 
+    public clear() {
+        this.guesses = [];
+        this.currentGuess = this.clearGuess();
+        this.matchCharacters = [];
+        this.partialCharacters = [];
+        this.missCharacters = [];
+        this.currentInputCharacter = 0;
+        this.currentGuessNumber = 1;
+    }
+
+    public clearGuess(): string[] {
+        return ['', '', '', '', ''];
+    }
+
     public addCharacterToGuess(character: string): void {
         if (this.currentInputCharacter < this.MAX_CHARACTERS) {
             this.currentGuess[this.currentInputCharacter] = character;

@@ -5,7 +5,7 @@
   right: auto;
   background-color: #222222;
   border: 1px solid #cccccc;
-  color: #fff; /* White text color */
+  color: #eeeeee; /* White text color */
   text-align: center; /* Centered text */
   border-radius: 4px; /* Rounded borders */
   padding: 10px; /* Padding */
@@ -13,5 +13,5 @@
   z-index: 1; /* Add a z-index if needed */
   left: 50%; /* Center the snackbar */
   top: 40%; /* 30px from the bottom */
-  box-shadow: 0 0 7px 7px black;
+  box-shadow: 0 0 20px 10px black;
 }

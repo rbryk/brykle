@@ -1,4 +1,6 @@
 import {Component, OnInit} from '@angular/core';
+import {GameStateService} from "../shared/game-state.service";
+import {SnackbarControllerService} from "../../snackbar/snackbar-controller.service";
 
 @Component({
     selector: 'app-header',
@@ -7,8 +9,11 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-    showHelp: boolean = false;
-    constructor() {
+    public showHelp: boolean = false;
+
+    private REFRESHED_MSG: string = "Wyczyszczono stan gry";
+
+    constructor(private game: GameStateService, private snackbar: SnackbarControllerService) {
     }
 
     ngOnInit(): void {
@@ -18,8 +23,12 @@ export class HeaderComponent implements OnInit {
         this.showHelp = true;
     }
 
+    clickRestart() {
+        this.game.clear();
+        this.snackbar.show(this.REFRESHED_MSG);
+    }
+
     onXClicked() {
         this.showHelp = false;
-
     }
 }
