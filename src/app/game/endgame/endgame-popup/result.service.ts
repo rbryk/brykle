@@ -15,7 +15,7 @@ export class ResultService {
     }
 
     public share(): string {
-        let brykleStartDate = this.game.startDate;
+        let brykleStartDate = new Date(this.game.startDate);
         brykleStartDate.setHours(brykleStartDate.getHours(), 0, 0, 0);
         const brykleDate = brykleStartDate.toLocaleString('pl-PL', {day: 'numeric', month: 'long'});
         const brykleTime = brykleStartDate.toLocaleString('pl-PL', {hour: 'numeric', minute: '2-digit'});

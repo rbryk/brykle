@@ -155,7 +155,7 @@ export class GameStateService {
     }
 
     public nextBrykleHour(): string {
-        let nextBrykleDate = this.startDate;
+        let nextBrykleDate = new Date(this.startDate);
         nextBrykleDate.setHours(nextBrykleDate.getHours() + 1, 0, 0, 0);
         return nextBrykleDate.toLocaleString('pl-PL', {hour: 'numeric', minute: '2-digit'});
     }
