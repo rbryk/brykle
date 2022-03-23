@@ -59,13 +59,13 @@ export class GameStateService {
     }
 
     public applyCurrentGuess(): void {
-        this.guesses.push(this.prepareCurrentGuessResult());
+        this.guesses.push(this.checkCurrentGuessResult());
         this.currentGuessNumber++;
         this.currentInputCharacter = 0;
-        this.currentGuess = ['', '', '', '', ''];
+        this.currentGuess = this.clearGuess();
     }
 
-    private prepareCurrentGuessResult(): CharacterState[] {
+    private checkCurrentGuessResult(): CharacterState[] {
         let currentGuessResult: CharacterState[] = [];
         let markedSolution = this.solution.split('');
         let markedGuess = this.currentGuess;

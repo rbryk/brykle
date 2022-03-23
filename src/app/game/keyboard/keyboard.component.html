@@ -1,47 +1,7 @@
 <div class="keyboard">
-    <div class="keyboardRow">
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='Q'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='W'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='E'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='R'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='T'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='Y'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='U'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='I'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='O'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='P'></app-keyboard-key>
-    </div>
-    <div class="keyboardRow">
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='A'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='S'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='D'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='F'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='G'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='H'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='J'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='K'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='L'></app-keyboard-key>
-    </div>
-    <div class="keyboardRow">
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell wide" key='OK'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='Z'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='X'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='C'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='V'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='B'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='N'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='M'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell wide" key='<<'></app-keyboard-key>
-    </div>
-    <div class="keyboardRow">
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='Ą'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='Ę'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='Ł'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='Ś'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='Ć'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='Ó'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='Ń'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='Ż'></app-keyboard-key>
-        <app-keyboard-key (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" key='Ź'></app-keyboard-key>
+    <div *ngFor="let keyboardRow of keyboardKeys; index as rowNum" class="keyboardRow">
+        <app-keyboard-key *ngIf="rowNum === 2" (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell wide" key='OK'></app-keyboard-key>
+        <app-keyboard-key *ngFor="let keyChar of keyboardRow" (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell" [key]="keyChar"></app-keyboard-key>
+        <app-keyboard-key *ngIf="rowNum === 2" (keyClicked)='onKeyClicked($event)' class="keyboardKeyCell wide" key='<<'></app-keyboard-key>
     </div>
 </div>
