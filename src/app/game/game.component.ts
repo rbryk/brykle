@@ -10,6 +10,10 @@ import {SnackbarControllerService} from "../snackbar/snackbar-controller.service
 })
 export class GameComponent implements OnInit {
 
+    private readonly INCORRECT_WORD_MSG = 'To nie jest poprawne słowo';
+
+    public showEndgamePopup: boolean = true;
+
     constructor(
         public game: GameStateService,
         private dictionay: DictionaryService,
@@ -25,8 +29,11 @@ export class GameComponent implements OnInit {
             if (this.game.isGuessFilled()) {
                 if (this.dictionay.isGuessValid(this.game.getCurrentGuess())) {
                     this.game.applyCurrentGuess()
+                    if (this.game.isOver()) {
+                        this.displayEndGame();
+                    }
                 } else {
-                    this.snackbar.show('To nie jest poprawne słowo');
+                    this.snackbar.show(this.INCORRECT_WORD_MSG);
                 }
             }
             return;
@@ -35,6 +42,18 @@ export class GameComponent implements OnInit {
             this.game.removeCharacterFromGuess();
             return;
         }
+        this.showEndgamePopup = false;
         this.game.addCharacterToGuess($event);
     }
+
+    displayEndGame() {
+        setTimeout(() => {
+            this.showEndgamePopup = true;
+        }, 1000);
+    }
+
+    onXClicked() {
+        this.showEndgamePopup = false;
+    }
+
 }

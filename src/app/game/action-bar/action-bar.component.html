@@ -1,6 +1,9 @@
-<div class="action-bar" *ngIf="!game.isOver()">
-    <div class="attempt-num">
+<div class="action-bar">
+    <div class="attempt-num" *ngIf="!game.isOver()">
         Próba: {{game.currentGuessNumber}}
+    </div>
+    <div class="attempt-num" *ngIf="game.isOver()">
+        Próba: {{game.currentGuessNumber - 1}}
     </div>
     <div class="hint-button" (click)='onClick()'>
         Hint

@@ -1,7 +1,13 @@
 <div class="board-section">
-    <div class="board-container-element">
+    <div *ngIf="!game.isOver()" class="board-container-element">
         <app-row *ngFor='let guess of game.guesses' [guess]="guess" [flatness]="'flat'"></app-row>
         <app-input-row></app-input-row>
         <app-empty-row *ngFor='let _ of game.emptyLines()'></app-empty-row>
+    </div>
+    <div *ngIf="game.isOver()" class="board-container-element">
+        <app-row *ngFor='let guess of game.guessesButLast()' [guess]="guess" [flatness]="'flat'"></app-row>
+        <app-row [guess]="game.lastGuess()" [flatness]="'normal'"></app-row>
+        <app-empty-row *ngFor='let _ of game.emptyLines()'></app-empty-row>
+        <app-empty-row *ngIf="game.currentGuessNumber <= game.MAX_GUESSES"></app-empty-row>
     </div>
 </div>

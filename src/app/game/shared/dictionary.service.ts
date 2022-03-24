@@ -6,14 +6,10 @@ import {WordsDatabaseService} from "./words-database.service";
 })
 export class DictionaryService {
 
-    private readonly _largePrimeNumber = 63949;
-
     private vowels: string = "EYUIOAĄĘÓ";
     private polishCharacters: string = "ĄĘÓŚĆŻŹŃŁ";
-    public wordCount: number = 0;
 
     constructor(private wordsDatabase: WordsDatabaseService) {
-        this.wordCount = this.wordsDatabase.words.length;
     }
 
     isGuessValid(word: string): boolean {
@@ -40,17 +36,6 @@ export class DictionaryService {
         return solution.split("").some(function (v, i, a) {
             return a.lastIndexOf(v) != i;
         });
-    }
-
-    getWordForToday(): string {
-        return this.wordsDatabase.words[this.getRandomPosition()];
-    }
-
-
-    private getRandomPosition() {
-        let date = new Date();
-        date.setHours(date.getHours(), 0, 0, 0);
-        return (date.getTime() * this._largePrimeNumber) % this.wordCount;
     }
 
     public attemptDeclination(attemptCount: number) {

@@ -5,7 +5,7 @@ import {Injectable} from '@angular/core';
 })
 export class SnackbarControllerService {
 
-    public timeout: number = 4000;
+    public timeout: number = 3500;
 
     public text: string = '';
     public shown: boolean = false;

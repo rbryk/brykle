@@ -24,8 +24,10 @@ export class HeaderComponent implements OnInit {
     }
 
     clickRestart() {
-        this.game.clear();
-        this.snackbar.show(this.REFRESHED_MSG);
+        if (!this.game.isOver()) {
+            this.game.clear();
+            this.snackbar.show(this.REFRESHED_MSG);
+        }
     }
 
     onXClicked() {

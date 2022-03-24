@@ -1,7 +1,8 @@
 import {Injectable} from '@angular/core';
 import {CharacterState} from "./character-state";
 import {MatchType} from "./match-type";
-import {DictionaryService} from "./dictionary.service";
+import {SolutionService} from "./solution.service";
+import {GameStateStorageService} from "./game-state-storage.service";
 
 @Injectable({
     providedIn: 'root'
@@ -25,9 +26,15 @@ export class GameStateService {
 
     public hintUsed: number = 0;
 
-    public constructor(private dictionary: DictionaryService) {
-        this.solution = this.dictionary.getWordForToday();
+    public constructor(private solutionService: SolutionService, private gameStateStorage: GameStateStorageService) {
         this.startDate = new Date();
+        if (gameStateStorage.isGameStateSaved(this)) {
+            gameStateStorage.load(this);
+        } else {
+            gameStateStorage.clearGames();
+            this.solution = this.solutionService.getSolution();
+            gameStateStorage.save(this);
+        }
     }
 
     public clear() {
@@ -38,10 +45,19 @@ export class GameStateService {
         this.missCharacters = [];
         this.currentInputCharacter = 0;
         this.currentGuessNumber = 1;
+        this.gameStateStorage.save(this);
     }
 
     public clearGuess(): string[] {
         return ['', '', '', '', ''];
+    }
+
+    public guessesButLast(): CharacterState[][] {
+        return this.guesses.slice(0, -1);
+    }
+
+    public lastGuess(): CharacterState[] {
+        return this.guesses[this.currentGuessNumber - 2];
     }
 
     public addCharacterToGuess(character: string): void {
@@ -63,6 +79,7 @@ export class GameStateService {
         this.currentGuessNumber++;
         this.currentInputCharacter = 0;
         this.currentGuess = this.clearGuess();
+        this.gameStateStorage.save(this);
     }
 
     private checkCurrentGuessResult(): CharacterState[] {

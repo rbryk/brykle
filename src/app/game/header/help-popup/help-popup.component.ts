@@ -1,11 +1,20 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {CharacterState} from "../../shared/character-state";
 import {MatchType} from "../../shared/match-type";
+import {animate, style, transition, trigger} from "@angular/animations";
 
 @Component({
   selector: 'app-help-popup',
   templateUrl: './help-popup.component.html',
-  styleUrls: ['./help-popup.component.scss', '../../endgame/endgame-popup/endgame-popup.component.scss']
+  styleUrls: ['./help-popup.component.scss', '../../endgame/endgame-popup/endgame-popup.component.scss'],
+  animations: [
+    trigger('helpPopupAnimationTrigger', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('100ms', style({ opacity: 1 })),
+      ])
+    ]),
+  ]
 })
 export class HelpPopupComponent implements OnInit {
 
@@ -14,7 +23,6 @@ export class HelpPopupComponent implements OnInit {
 
   @Output() xClicked: EventEmitter<string> =
       new EventEmitter<string>();
-
 
   constructor() {
     this.worek = [

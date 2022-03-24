@@ -1,6 +1,9 @@
-<div id="popupOverlayElement">
+<div @endgamePopupAnimationTrigger id="popupOverlayElement">
     <div class="popup-container">
         <div class="popup" *ngIf="game.youWin()">
+            <div class="header" (click)="closeHelp()">
+                <mat-icon>highlight_off</mat-icon>
+            </div>
             <div class="title">
                 Gratulacje!
             </div>
@@ -25,6 +28,9 @@
             <div class="footer">Autor: Rafał Bryk</div>
         </div>
         <div class="popup" *ngIf="!game.youWin()">
+            <div class="header" (click)="closeHelp()">
+                <mat-icon>highlight_off</mat-icon>
+            </div>
             <div class="title">
                 Niestety ...
             </div>
