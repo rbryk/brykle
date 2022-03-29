@@ -133,11 +133,11 @@ export class GameStateService {
         if (this.matchCharacters.indexOf(key) > -1 || key === 'OK') {
             return MatchType.Match;
         }
-        if (this.missCharacters.indexOf(key) > -1 || key === '<<') {
-            return MatchType.Miss;
-        }
         if (this.partialCharacters.indexOf(key) > -1) {
             return MatchType.Partial;
+        }
+        if (this.missCharacters.indexOf(key) > -1 || key === '<<') {
+            return MatchType.Miss;
         }
         return MatchType.None;
     }
