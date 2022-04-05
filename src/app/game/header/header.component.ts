@@ -23,13 +23,6 @@ export class HeaderComponent implements OnInit {
         this.showHelp = true;
     }
 
-    clickRestart() {
-        if (!this.game.isOver()) {
-            this.game.clear();
-            this.snackbar.show(this.REFRESHED_MSG);
-        }
-    }
-
     onXClicked() {
         this.showHelp = false;
     }

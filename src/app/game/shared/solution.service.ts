@@ -6,7 +6,7 @@ import {WordsDatabaseService} from "./words-database.service";
 })
 export class SolutionService {
 
-    private readonly _largePrimeNumber = 63949;
+    private readonly _largePrimeNumber = 63469;
 
     public wordCount: number = 0;
 
