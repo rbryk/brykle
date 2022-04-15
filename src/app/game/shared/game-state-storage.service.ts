@@ -11,7 +11,6 @@ export class GameStateStorageService {
     }
 
     save(game: GameStateService) {
-        console.log("game is saving ...");
         let key = this.getKey(game.startDate);
         let value = {
             solution: game.solution,
@@ -26,7 +25,6 @@ export class GameStateStorageService {
 
     load(game: GameStateService) {
         let gameState = JSON.parse(this.getSavedGameState(game));
-        console.log(gameState);
         game.solution = gameState.solution;
         game.guesses = gameState.guesses;
         game.hintUsed = gameState.hintUsed;
@@ -52,7 +50,6 @@ export class GameStateStorageService {
     private getKey(startDate: Date): string {
         let date = new Date(startDate);
         date.setHours(date.getHours(), 0, 0, 0);
-        console.log('key: ' + date.toLocaleString());
         return date.toLocaleString();
     }
 }

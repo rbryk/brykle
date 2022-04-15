@@ -1,21 +1,21 @@
 import {Injectable} from '@angular/core';
-import {WordsDatabaseService} from "./words-database.service";
+import {SolutionsDatabaseService} from "./solutions-database.service";
 
 @Injectable({
     providedIn: 'root'
 })
 export class SolutionService {
 
-    private readonly _largePrimeNumber = 63469;
+    private readonly _largePrimeNumber = 3167;
 
     public wordCount: number = 0;
 
-    constructor(private wordsDatabase: WordsDatabaseService) {
-        this.wordCount = this.wordsDatabase.words.length;
+    constructor(private solutionsDatabase: SolutionsDatabaseService) {
+        this.wordCount = this.solutionsDatabase.words.length;
     }
 
     getSolution(): string {
-        return this.wordsDatabase.words[this.getRandomPosition()];
+        return this.solutionsDatabase.words[this.getRandomPosition()];
     }
 
     private getRandomPosition() {
