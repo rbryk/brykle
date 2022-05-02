@@ -37,7 +37,7 @@ export class EndgamePopupComponent implements OnInit {
   public dictLink: string = '#';
 
   ngOnInit(): void {
-    this.dictLink = `https:/sjp.pl/${this.game.solution.toLowerCase()}` ;
+    this.dictLink = `https://sjp.pl/${this.game.solution.toLowerCase()}` ;
     this.prepareSolutionTiles();
   }
 

@@ -42,7 +42,7 @@ export class ResultService {
                 "\n";
         }
         result += board;
-        result += 'Graj na http://brykle.pl';
+        result += 'Graj na https://brykle.pl';
         return result;
     }
 
