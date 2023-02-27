@@ -16,11 +16,12 @@ import {MaterialExampleModule} from '../material.module';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {HeaderComponent} from './game/header/header.component';
 import {ActionBarComponent} from './game/action-bar/action-bar.component';
-import { EmptyTileComponent } from './game/game-board/next-lines/empty-tile/empty-tile.component';
-import { EmptyRowComponent } from './game/game-board/next-lines/empty-row/empty-row.component';
-import { EndgamePopupComponent } from './game/endgame/endgame-popup/endgame-popup.component';
-import { SnackbarComponent } from './snackbar/snackbar.component';
-import { HelpPopupComponent } from './game/header/help-popup/help-popup.component';
+import {EmptyTileComponent} from './game/game-board/next-lines/empty-tile/empty-tile.component';
+import {EmptyRowComponent} from './game/game-board/next-lines/empty-row/empty-row.component';
+import {EndgamePopupComponent} from './game/endgame/endgame-popup/endgame-popup.component';
+import {SnackbarComponent} from './snackbar/snackbar.component';
+import {HelpPopupComponent} from './game/header/help-popup/help-popup.component';
+import {ClipboardModule} from '@angular/cdk/clipboard';
 
 @NgModule({
     declarations: [
@@ -46,7 +47,8 @@ import { HelpPopupComponent } from './game/header/help-popup/help-popup.componen
         AppRoutingModule,
         MatSnackBarModule,
         MaterialExampleModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        ClipboardModule,
     ],
     providers: [],
     bootstrap: [AppComponent]
