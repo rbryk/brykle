@@ -48,7 +48,19 @@ export class EndgamePopupComponent implements OnInit {
   }
 
   public onClick() {
-    this.snackbar.show('Skopiowano do schowka');
+
+    if (navigator.share) {
+      navigator.share({
+        title: 'Brykle',
+        text: this.result.share(),
+        // url: 'https://rafalbryk.pl/brykle'
+      })
+          .then(() => console.log('Successful share'))
+          .catch(error => console.log('Error sharing:', error));
+    } else {
+      this.snackbar.show('Skopiowano do schowka');
+    }
+
   }
 
   closeHelp() {
